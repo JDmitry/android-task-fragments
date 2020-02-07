@@ -5,21 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toolbar;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class FirstFragment extends Fragment {
     private String textForFragment;
-    private Toolbar toolbar;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         assert this.getArguments() != null;
         textForFragment = this.getArguments().getString(SecondActivity.MESSAGE);
-        toolbar.setNavigationIcon(R.drawable.ic_launcher_background);
     }
 
     @Override
