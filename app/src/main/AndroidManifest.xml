@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".SecondActivity"
-                  android:parentActivityName="com.epam.fragments.MainActivity">
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
 
         <activity android:name=".MainActivity">
@@ -24,5 +24,4 @@
 
 
     </application>
-
 </manifest>
