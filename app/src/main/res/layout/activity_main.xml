@@ -7,6 +7,7 @@
     android:background="#FF9800">
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
@@ -20,7 +21,7 @@
             android:textSize="30sp"
             android:paddingBottom="5dp"
             android:textColor="#480672"
-            android:onClick="invokeFragment" />
+            android:onClick="clickRadioButton" />
 
         <RadioButton
             android:id="@+id/radio_two"
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:textColor="#207CA7"
-            android:onClick="invokeFragment" />
+            android:onClick="clickRadioButton" />
     </RadioGroup>
 
     <LinearLayout
