@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#FF9800">
+    android:background="#FF9800" >
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -55,6 +55,4 @@
             android:text="@string/button_text"
             android:onClick="onPressed" />
     </LinearLayout>
-
-
 </LinearLayout>
