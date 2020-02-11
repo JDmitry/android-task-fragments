@@ -1,6 +1,7 @@
 package com.epam.fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
@@ -8,7 +9,7 @@ import android.os.Bundle;
 
 public class SecondActivity extends AppCompatActivity {
     final static String MESSAGE = "message";
-    private String choice;
+    private String selectoin;
     private String message;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
@@ -20,35 +21,31 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         Intent intent = getIntent();
-        choice = intent.getStringExtra(MainActivity.CHOICE);
-        message = intent.getStringExtra(MainActivity.KEY_MESSAGE);
+        selectoin = intent.getStringExtra(MainActivity.SELECT_KEY);
+        message = intent.getStringExtra(MainActivity.MESSAGE_KEY);
 
-        switch (choice) {
-            case "first_fragment":
+        switch (selectoin) {
+            case MainActivity.FIRST_FRAGMENT:
                 if (savedInstanceState == null) {
-                    bundle = new Bundle();
-                    bundle.putString(MESSAGE, message);
-                    FirstFragment firstFragment = new FirstFragment();
-                    firstFragment.setArguments(bundle);
-                    fragmentManager = getSupportFragmentManager();
-                    transaction = fragmentManager.beginTransaction();
-                    transaction.add(R.id.container, firstFragment);
-                    transaction.commit();
+                    selectFragment(new FirstFragment());
                 }
                 break;
 
-            case "second_fragment":
+            case MainActivity.SECOND_FRAGMENT:
                 if (savedInstanceState == null) {
-                    bundle = new Bundle();
-                    bundle.putString(MESSAGE, message);
-                    SecondFragment secondFragment = new SecondFragment();
-                    secondFragment.setArguments(bundle);
-                    fragmentManager = getSupportFragmentManager();
-                    transaction = fragmentManager.beginTransaction();
-                    transaction.add(R.id.container, secondFragment);
-                    transaction.commit();
+                    selectFragment(new SecondFragment());
                 }
                 break;
         }
+    }
+
+    public void selectFragment(Fragment fragment) {
+        bundle = new Bundle();
+        bundle.putString(MESSAGE, message);
+        fragment.setArguments(bundle);
+        fragmentManager = getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.container, fragment);
+        transaction.commit();
     }
 }

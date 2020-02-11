@@ -11,17 +11,18 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    final static String KEY_MESSAGE = "message";
-    final static String CHOICE = "choice";
-    final static String TOAST_MESSAGE = "Chooce a fragment";
-    private String choice;
+    final static String MESSAGE_KEY = "message";
+    final static String SELECT_KEY = "choice";
+    final static String TOAST_MESSAGE = "Choose a fragment";
+    final static String FIRST_FRAGMENT = "first_fragment";
+    final static String SECOND_FRAGMENT = "second_fragment";
+    private String selection;
     private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         editText = (EditText) findViewById(R.id.message);
     }
 
@@ -31,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.radio_one:
                 if (checked) {
-                    choice = "first_fragment";
+                    selection = FIRST_FRAGMENT;
                     break;
                 }
 
             case R.id.radio_two:
                 if (checked) {
-                    choice = "second_fragment";
+                    selection = SECOND_FRAGMENT;
                     break;
                 }
         }
@@ -45,19 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void onPressed(View view) {
         String message = editText.getText().toString();
-
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        intent.putExtra(KEY_MESSAGE, message);
-        intent.putExtra(CHOICE, choice);
+        intent.putExtra(MESSAGE_KEY, message);
+        intent.putExtra(SELECT_KEY, selection);
 
-        if(choice != null) {
+        if (selection != null) {
             startActivity(intent);
-        }else {
+        } else {
             Toast toast = Toast.makeText(getApplicationContext(),TOAST_MESSAGE,Toast.LENGTH_LONG);
             toast.setGravity(Gravity.TOP,0,220);
             toast.show();
         }
     }
-
-
 }
